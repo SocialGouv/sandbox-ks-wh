@@ -1,10 +1,8 @@
-name: 👀 Review
+name: 🚀 Production
 on:
   push:
-    branches:
-      - "**"
-      - "!master"
-      - "!main"
+    tags:
+      - v*
 
 concurrency:
   cancel-in-progress: true
@@ -12,5 +10,6 @@ concurrency:
 
 jobs:
   kontinuous:
-    uses: socialgouv/workflows/.github/workflows/use-ks-wh-review.yaml@master
+    name: "Deploy on Kubernetes 🐳"
+    uses: socialgouv/workflows/.github/workflows/use-ks-wh-production.yaml@master
     secrets: inherit
