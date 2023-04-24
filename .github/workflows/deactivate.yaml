@@ -9,12 +9,15 @@ on:
       - "!master"
       - "!main"
       - "!dev"
-
-concurrency:
-  cancel-in-progress: true
-  group: ${{ github.workflow }}-${{ github.event.ref || github.event.pull_request.head.ref }}
+      - "!develop"
+      - "!**/persist"
+      - "!persist/**"
+      - "!**/persist/**"
+      - "!persist-**"
+      - "!**-persist"
+      - "!**-persist-**"
 
 jobs:
-  kontinuous:
+  socialgouv:
     uses: socialgouv/workflows/.github/workflows/use-ks-wh-deactivate.yaml@v1
     secrets: inherit
